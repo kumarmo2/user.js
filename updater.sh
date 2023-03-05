@@ -385,6 +385,6 @@ show_banner
 update_updater "$@"
 
 getProfilePath # updates PROFILE_PATH or exits on error
-cd "$PROFILE_PATH" && update_userjs
+# cd "$PROFILE_PATH" && update_userjs
 
 cd "$CURRDIR"
