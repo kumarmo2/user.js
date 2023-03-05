@@ -27,3 +27,8 @@ user_pref("privacy.clearOnShutdown.downloads", false); // [DEFAULT: true]
 user_pref("privacy.clearOnShutdown.formdata", false);  // [DEFAULT: true]
 user_pref("privacy.clearOnShutdown.history", false);   // [DEFAULT: true]
 user_pref("privacy.clearOnShutdown.sessions", false);  // [DEFAULT: true]
+
+
+
+
+user_pref("browser.fullscreen.autohide", false);  // [DEFAULT: true]
