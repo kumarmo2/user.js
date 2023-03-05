@@ -241,24 +241,24 @@ remove_comments() { # expects 2 arguments: from-file and to-file
 
 # Applies latest version of user.js and any custom overrides
 update_userjs() {
-  declare -r newfile="$(download_file 'https://raw.githubusercontent.com/arkenfox/user.js/master/user.js')"
-  [ -z "${newfile}" ] && echo -e "${RED}Error! Could not download user.js${NC}" && return 1 # check if download failed
+  # declare -r newfile="$(download_file 'https://raw.githubusercontent.com/arkenfox/user.js/master/user.js')"
+  # [ -z "${newfile}" ] && echo -e "${RED}Error! Could not download user.js${NC}" && return 1 # check if download failed
 
-  echo -e "Please observe the following information:
-    Firefox profile:  ${ORANGE}$(pwd)${NC}
-    Available online: ${ORANGE}$(get_userjs_version "$newfile")${NC}
-    Currently using:  ${ORANGE}$(get_userjs_version user.js)${NC}\n\n"
+  # echo -e "Please observe the following information:
+    # Firefox profile:  ${ORANGE}$(pwd)${NC}
+    # Available online: ${ORANGE}$(get_userjs_version "$newfile")${NC}
+    # Currently using:  ${ORANGE}$(get_userjs_version user.js)${NC}\n\n"
 
-  if [ "$CONFIRM" = 'yes' ]; then
-    echo -e "This script will update to the latest user.js file and append any custom configurations from user-overrides.js. ${RED}Continue Y/N? ${NC}"
-    read -p "" -n 1 -r
-    echo -e "\n"
-    if ! [[ $REPLY =~ ^[Yy]$ ]]; then
-      echo -e "${RED}Process aborted${NC}"
-      rm "$newfile"
-      return 1
-    fi
-  fi
+  # if [ "$CONFIRM" = 'yes' ]; then
+    # echo -e "This script will update to the latest user.js file and append any custom configurations from user-overrides.js. ${RED}Continue Y/N? ${NC}"
+    # read -p "" -n 1 -r
+    # echo -e "\n"
+    # if ! [[ $REPLY =~ ^[Yy]$ ]]; then
+      # echo -e "${RED}Process aborted${NC}"
+      # rm "$newfile"
+      # return 1
+    # fi
+  # fi
 
   # Copy a version of user.js to diffs folder for later comparison
   if [ "$COMPARE" = true ]; then
@@ -385,6 +385,6 @@ show_banner
 update_updater "$@"
 
 getProfilePath # updates PROFILE_PATH or exits on error
-# cd "$PROFILE_PATH" && update_userjs
+cd "$PROFILE_PATH" && update_userjs
 
 cd "$CURRDIR"
