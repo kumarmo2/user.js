@@ -33,4 +33,6 @@ user_pref("privacy.clearOnShutdown.sessions", false);  // [DEFAULT: true]
 
 user_pref("browser.fullscreen.autohide", false);  // [DEFAULT: true]
 user_pref("extensions.pocket.enabled", false);  // [DEFAULT: true]
+user_pref("privacy.resistFingerprinting", true);
+user_pref("privacy.resistFingerprinting.letterboxing", false); // If this is true. the inner window has a margin which reduces viewport area.
 
