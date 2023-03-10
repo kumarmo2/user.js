@@ -272,7 +272,7 @@ update_userjs() {
   [ "$BACKUP" = 'single' ] && bakname='userjs_backups/user.js.backup'
   cp user.js "$bakname" &>/dev/null
 
-  mv "${newfile}" user.js
+  # mv "${newfile}" user.js
   echo -e "Status: ${GREEN}user.js has been backed up and replaced with the latest version!${NC}"
 
   if [ "$ESR" = true ]; then
