@@ -35,4 +35,7 @@ user_pref("browser.fullscreen.autohide", false);  // [DEFAULT: true]
 user_pref("extensions.pocket.enabled", false);  // [DEFAULT: true]
 user_pref("privacy.resistFingerprinting", true);
 user_pref("privacy.resistFingerprinting.letterboxing", false); // If this is true. the inner window has a margin which reduces viewport area.
+user_pref("media.eme.enabled", true);
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); // enable custom css.
+// user_pref("media.eme.enabled", true);
 
