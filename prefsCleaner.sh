@@ -2,7 +2,7 @@
 
 ## prefs.js cleaner for Linux/Mac
 ## author: @claustromaniac
-## version: 1.6
+## version: 2.1
 
 ## special thanks to @overdodactyl and @earthlng for a few snippets that I stol..*cough* borrowed from the updater.sh
 
@@ -132,13 +132,23 @@ done
 ## change directory to the Firefox profile directory
 cd "$(dirname "${SCRIPT_FILE}")"
 
+# Check if running as root and if any files have the owner as root/wheel.
+if [ "${EUID:-"$(id -u)"}" -eq 0 ]; then
+	fQuit 1 "You shouldn't run this with elevated privileges (such as with doas/sudo)."
+elif [ -n "$(find ./ -user 0)" ]; then
+	printf 'It looks like this script was previously run with elevated privileges,
+you will need to change ownership of the following files to your user:\n'
+	find . -user 0
+	fQuit 1
+fi
+
 [ "$AUTOUPDATE" = true ] && update_prefsCleaner "$@"
 
 echo -e "\n\n"
 echo "                   ╔══════════════════════════╗"
 echo "                   ║     prefs.js cleaner     ║"
 echo "                   ║    by claustromaniac     ║"
-echo "                   ║           v1.6           ║"
+echo "                   ║           v2.1           ║"
 echo "                   ╚══════════════════════════╝"
 echo -e "\nThis script should be run from your Firefox profile directory.\n"
 echo "It will remove any entries from prefs.js that also exist in user.js."
